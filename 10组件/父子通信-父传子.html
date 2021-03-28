@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="test">
+        <ccc  :cmovies='movies'></ccc>
+    </div>
+
+    
+
+    <template id='cpn'>
+        <ul>
+            <li v-for='a in cmovies'>{{a}}</li>
+        </ul>
+    </template>
+
+    <script>
+        
+        let test = new Vue({
+            el:'#test',
+            data:{
+                movies:['唐探3','刺杀小说家','哪吒重生']
+            },
+            computed:{
+
+            },
+            methods:{
+
+            },
+            filters:{
+
+            },
+            components:{
+                ccc:{
+                    template:'#cpn',
+                    props:{
+                        // 1、简单的限制一下类型
+                        // cmovies:Array
+                        // 2、做很多限制
+                        cmovies:{
+                            type:Array,
+                            //默认值为数组时，必须使用函数的方式返回
+                            default(){
+                                return this.movies
+                            },
+                            // required:true
+                        }
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+</html>

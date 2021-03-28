@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 1.lazy：失去焦点或回车时才绑定 -->
+    <input type="text" v-model.lazy = 'test'>
+    <h2>{{test}}</h2>
+
+    <!-- 2.number：将数字转换成int，默认输入的任何洞悉都是string -->
+    <input type="number" v-model.number = 'test2'>
+    <h2>{{test2}}</h2>
+
+    <!-- 3.trim： 去掉前后两侧的空格-->
+    <input type="text" v-model.trim = 'test3'>
+    <pre>{{test3}}</pre>
+</div>
+<script>
+    let app = new Vue({
+        el:'#app',
+        data:{
+            //数据
+            test:'哈哈',
+            test2:'1',
+            test3:'呵呵'
+        },
+        compouted:{
+            //属性
+        },
+        methods:{
+            //方法
+        },
+        filters:{
+            //过滤器
+        }
+    });
+</script>
+</body>
+</html>

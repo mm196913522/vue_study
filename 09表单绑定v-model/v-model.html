@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <!-- 绑定text -->
+        <input type="text" v-model="msg">
+        <h2>{{msg}}</h2>
+
+        <label for="boy">
+            <input type="radio" name="sex" id="boy" value=0 v-model='sex'>男
+        </label>
+        
+        <!-- 绑定radio -->
+        <label for="girl">
+            <input type="radio" name="sex" id="girl" value=1 v-model='sex'>女
+        </label>
+        <h2>{{sex}}</h2>
+
+        <!-- 单选框 -->
+        <label for="daqiu">
+            <input type="checkbox" name="danxuan" id="daqiu" v-model='danxuan'>打球
+        </label>
+        <h2>{{danxuan}}</h2>
+
+        <!-- 多选框 -->
+            <!-- <label for="shangwang">
+                <input type="checkbox" name="shangwang" id="shangwang" value=0 v-model='duoxuan'>上网
+            </label>
+
+            <label for="shuijiao">
+                <input type="checkbox" name="shuijiao" id="shuijiao" value=1 v-model='duoxuan'>睡觉
+            </label>
+
+            <label for="xuexi">
+                <input type="checkbox" name="xuexi" id="xuexi" value=2  v-model='duoxuan'>学习
+            </label>
+
+            <label for="wanshouji">
+                <input type="checkbox" name="wanshouji" id="wanshouji" value=3  v-model='duoxuan'>玩手机
+            </label>
+
+            <label for="paobu">
+                <input type="checkbox" name="paobu" id="paobu" value=4  v-model='duoxuan'>跑步
+            </label>
+
+            <label for="kandianying">
+                <input type="checkbox" name="kandianying" id="kandianying" value=5  v-model='duoxuan'>看电影
+            </label> -->
+
+            <label v-for='(v,i) in shu' :for='v'>
+                <input type="checkbox" :value='i' :id='v' v-model='duoxuan'>{{v}}
+            </label>
+
+        <!-- select单选 -->
+        <select name="xueke" v-model='sel'>
+            <!-- <option value="0">语文</option>
+            <option value="1">数学</option>
+            <option value="2">英语</option>
+            <option value="3">政治</option>
+            <option value="4">历史</option> -->
+            <option v-for='(v,i) in shu' :value="i" >{{v}}</option>
+        </select>
+
+        <!-- select多选 -->
+        <select name="xueke" v-model='sels' multiple>
+            <option value="0">语文</option>
+            <option value="1">数学</option>
+            <option value="2">英语</option>
+            <option value="3">政治</option>
+            <option value="4">历史</option>
+            
+        </select>
+    </div>
+</body>
+<script>
+    //event.target.value
+    let app = new Vue({
+        el:'#app',
+        data:{
+            msg:'呵呵',
+            sex:'',
+            danxuan:false,
+            duoxuan:[],
+            sel:'0',
+            sels:[],
+            shu:['语文','数学','英语','政治','历史']
+        },
+        computed:{
+
+        },
+        methods:{
+
+        },
+        filters:{
+
+        }
+    });
+</script>
+</html>

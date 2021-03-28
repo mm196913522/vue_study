@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+
+    <template id="zmb">
+        <div>
+            <h2 v-for="v in farr"><button @click="btn(v.id)">{{v.sex}}</button></h2>
+            <h1>{{fmsg}}</h1>
+            <ul>
+                <li v-for='(vv) in leibie'><button :id="vv.id">{{vv.name}}</button></li>
+            </ul>
+        </div>
+    </template>
+
+    <div id="app">
+        父组件模板
+        <cpn :farr="arr" :fmsg="msg"  @shijianming="chulifangfa"></cpn>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                arr:[
+                    {id:"nan",sex:"男"},
+                    {id:"nv",sex:"女"},
+                    {id:"weizhi",sex:"未知"}
+                ],
+                msg:"这个是给子组件来用的"
+            },
+            compoted:{
+
+            },
+            methods:{
+                chulifangfa(a){
+                    alert(a);
+                }
+            },
+            filters:{
+
+            },
+            components:{
+                //子组件
+                cpn:{
+                    template:'#zmb',
+                    data(){
+                        return {
+                            leibie:[
+                                {id:"aaa",name:"苹果"},
+                                {id:"bbb",name:"华为"},
+                                {id:"ccc",name:"小米"},
+                            ]
+                        }
+                    },
+                    props:{
+                        farr:Array,
+                        fmsg:String
+                    },
+                    methods:{
+                        btn(i){
+                            //将事件发射給父组件,父组件那边需要监听
+                            this.$emit('shijianming',i)
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

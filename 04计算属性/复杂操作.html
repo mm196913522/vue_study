@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <h2>总价格：{{sumprice}}</h2>
+    
+</div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',  //用于挂载要管理的元素
+            data:{  //定义数据
+                books:[
+                    {
+                        id:100,
+                        name:'东鹏',
+                        price:520
+                    },
+                    {
+                        id:200,
+                        name:'经典',
+                        price:1314
+                    },
+                    {
+                        id:300,
+                        name:'特仑苏',
+                        price:888
+                    }
+                ]
+            },
+            computed:{
+                sumprice:function(){
+                    let sum = 0;
+                    this.books.forEach((v) => {
+                        sum = sum + v.price
+                    });
+                    return sum;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

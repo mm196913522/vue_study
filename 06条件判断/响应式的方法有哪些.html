@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <ul>
+            <li v-for='v in arr'>{{v}}</li>
+        </ul>
+        <button @click='btn()'>点吧</button>
+    </div>
+    <script>
+        let app = new Vue({
+            el:'#app',
+            data:{
+                arr:['a','b','c'],
+                a:0
+            },
+            compoted:{
+
+            },
+            methods:{
+                btn(){
+                    //this.arr.unshift()  //从头添加元素
+                    //this.arr.push(this.a++)  //从尾添加元素
+                    //this.arr.splice(2,0,this.a++)  //从第2个位置添加元素
+                    //this.arr.pop()  //删除最后一个元素
+                    //this.arr.shift()  //删除第一个元素
+                }
+            }
+        });
+    </script>
+</body>
+</html>

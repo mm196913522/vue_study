@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <mycpn v-for='v in arr'></mycpn>
+    </div>
+</body>
+<script>
+    //1.创建组件构造器
+    const cpnC = Vue.extend({
+        template:`
+        <div>
+            <h2>我是标题</h2>
+            <p>我是内容</p>
+            <p>我是什么好呢</p>
+        </div>
+        `
+    });
+    //2.注册组件
+    //第一个参数为自定义标签名，第二个参数为构造好的组件
+    Vue.component('mycpn',cpnC);
+    //3.使用组件
+
+    let app = new Vue({
+        el:'#app',
+        data:{
+            arr:[1,2,3]
+        },
+        computed:{
+
+        },
+        methods:{
+
+        },
+        filters:{
+
+        }
+    });
+</script>
+</html>

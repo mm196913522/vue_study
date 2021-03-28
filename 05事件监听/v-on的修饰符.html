@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<div id="test">
+    <div @click='divc'>
+        aaaaaaaaaaa
+        <!-- stop阻止冒泡 -->
+        <button @click.stop='btnc'>
+            点我
+        </button>
+        <!-- prevent阻止默认事件 -->
+        <a href="http://www.baidu.com" @click.prevent.stop='ac'>点我进百度</a>
+        <!-- 监听键盘点击 -->
+        <input type="text" @click.stop @keyup.13 = 'anxia'  >
+        <form action="">
+            <button type="submit" @click.once='yici' @click.prevent.stop>提交</button>
+        </form>
+    </div>
+</div>
+<body>
+    <script>
+        let app = new Vue({
+            el:'#test',
+            data:{
+                a:1,
+                b:2
+            },
+            computed:{
+                ab(){
+                    return this.a+this.b;
+                }
+            },
+            methods:{
+                divc(){
+                    console.log('点了DIV');
+                },
+                btnc(){
+                    console.log('点了BTN');
+                },
+                ac(){
+                    console.log('点了超链接');
+                },
+                anxia(){
+                    console.log('按下回车键');
+                },
+                yici(){
+                    console.log('提交了')
+                }
+            }
+        });
+    </script>
+</body>
+</html>

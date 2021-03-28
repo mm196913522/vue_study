@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+    <style>
+        .hong{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2>{{test}}</h2>
+        <h2>{{sums()}}</h2>
+        <h2 :class='shuxing'>{{b | guo}}</h2>
+    </div>
+    <script>
+
+        let arr = [10,20,30,40,50,60,70,80];
+
+        //filter函数
+        //取出小于50的数字，使用过滤器，满足条件的N会放进一个新数组，但是需要一个变量进行接收。该函数返回值必须是布尔值
+        let arra = arr.filter((n)=>{
+            return n<=50
+        });
+        console.log(arra);
+
+        
+        //forEach
+        //该函数没有返回值
+        arr.forEach((v,i)=>{
+            arr[i] = v*2
+        })
+        console.log(arr);
+
+        //map
+        //该函数返回计算后的值放进新数组
+        arr = [10,20,30,40,50,60,70,80,90];
+        arr2 = arr.map((n)=>{
+            return n*2
+        })
+        console.log(arr2);
+
+        //reduce
+        //该函数对数组内容进行汇总,第一个参数为上次返回值，第二个参数为遍历的值
+        let he = arr.reduce((last_return,n)=>{
+            return last_return+n;
+        })
+        console.log(he);
+
+        //将小于50的值乘以2再求和
+        let filter_arr = arr.filter((n)=>{
+            return n<50
+        })
+        
+        let map_arr = filter_arr.map((n)=>{
+            return n*2
+        })
+
+        let haha = map_arr.reduce((l,n)=>{
+            return l+n
+        })
+        console.log(haha);
+
+        //骚操作
+        arr = [10,90,20,80,30,70,40,60,50];
+
+        console.log(arr.filter((n)=>{
+            return n<50
+        }).map((n)=>{
+            return n*2
+        }).reduce((l,n)=>{
+            return l+n
+        }));
+        //箭头函数啊。。。
+        console.log(arr.filter(n=>n<50).map(n=>n*2).reduce((l,n)=>l+n));
+
+
+        let app = new Vue({
+            el:'#app',
+            data:{
+                test:'哈哈',
+                a:1,
+                b:2
+            },
+            computed:{
+                shuxing(){
+                    return {'hong':true}
+                }
+            },
+            methods:{
+                sums(){
+                    return this.a + this.b;
+                }
+            },
+            filters:{
+                guo(t){
+                    return t*3
+                }
+            }
+        });
+    </script>
+</body>
+</html>

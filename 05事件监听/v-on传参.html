@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="test">
+        <h2>{{a}}</h2>
+        <button @click='btn1'>没有参数</button>
+        <button @click='btn2'>需要参数但没传</button>
+        <button @click='btn3(a)'>有传参数</button>
+        <button @click='btn4(a,$event)'>有参数,取event</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#test',
+            data:{
+                a:'1'
+            },
+            computed:{
+
+            },
+            methods:{
+                btn1(){
+                    this.a = '没有参数';
+                },
+                btn2(e){
+                    console.log(e);
+                },
+                btn3(a){
+                    this.a = '有传参数';
+                },
+                btn4(a,e){
+                    this.a = '有event吗';
+                    console.log(e);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

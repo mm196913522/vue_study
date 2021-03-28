@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .ys{
+            color:red
+        }
+        .dx{
+            font-size:30px;
+        }
+    </style>
+</head>
+<body>
+<div id='app'>
+    <h2>{{msg}}</h2>
+    <ul>
+        <li v-for='(m,i) in movies' :class='shuxing(i)' @click='dj(i)'>{{m}}</li>
+    </ul>
+</div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',  //用于挂载要管理的元素
+            data:{  //定义数据
+                msg:'这是一个作业',
+                movies:['葫芦娃','黑猫警长','苏克贝塔','正义战士','蜡笔小新','哆啦A梦'],
+                dianshei:-1
+            },
+            computed:{
+
+            },
+            methods:{
+                shuxing(i){
+                    return {ys:this.dianshei === i,dx:this.dianshei === i}
+                },
+                dj:function(i){
+                    this.dianshei = i;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

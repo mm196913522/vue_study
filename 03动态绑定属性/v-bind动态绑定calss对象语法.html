@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .a{
+            color:red
+        }
+        .b{
+            color:blue
+        }
+        .c{
+            color:green
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h2 :class='{a:isa,b:isb,c:isc}'>动态绑定元素class</h2>
+        <h2 :class='getclass()'>动态绑定元素class第二种方法</h2>
+        <button @click='dianji'>点我变颜色鸭</button>
+    </div>
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                msg:'第二天学习',
+                isa:false,
+                isb:false,
+                isc:true
+            },
+            methods:{
+                dianji:function(){
+                    if(app.isa === true)
+                    {
+                        app.isa = false;
+                        app.isb = true;
+                    }
+                    else if(app.isb === true)
+                    {
+                        app.isb = false;
+                        app.isc = true;
+                    }
+                    else
+                    {
+                        app.isc = false;
+                        app.isa = true;
+                    }
+                },
+                getclass:function(){
+                    return {a:this.isa,b:this.isb,c:this.isc};
+                }
+            }
+        });
+    </script>
+</body>
+</html>

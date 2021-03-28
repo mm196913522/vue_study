@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <quanjuzujian></quanjuzujian>
+        <!-- 下面的局部组件标签不生效 -->
+        <jubuzujian></jubuzujian>
+    </div>
+
+    <div id="app2">
+        <jubuzujian></jubuzujian>
+    </div>
+    <script>
+        const quanju = Vue.extend({
+            template:`
+            <div>
+                <h2>这是全局组件</h2>
+            </div>
+            `
+        })
+        Vue.component('quanjuzujian',quanju)
+
+        const jubu = Vue.extend({
+            template:`
+            <div>
+                <h2>这是局部组件</h2>
+            </div>
+            `
+        })
+
+        const app = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            computed:{
+
+            },
+            methods:{
+
+            },
+            filters:{
+
+            }
+        })
+
+        const app2 = new Vue({
+            el:'#app2',
+            components:{
+                jubuzujian:jubu
+            }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <cpnf></cpnf>
+    </div>
+
+    <template id = 'cpnf'>
+        <div>
+            <cnpz></cnpz>
+            <h2>{{a}}</h2>
+        </div>
+    </template>
+
+    <template id = 'cpnz'>
+        <div>
+            <h2>{{b}}</h2>
+        </div>
+    </template>
+    <script>
+        
+        Vue.component('cpnf',{
+            template:'#cpnf',
+            components:{
+                cnpz:{
+                    template:'#cpnz',
+                    data(){
+                        return {
+                            b:'这是子组件'
+                        }
+                    }
+                }
+            },
+            data(){
+                return {
+                a:'这个是父组件'
+            }
+            }
+        })
+
+        const app = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            computed:{
+
+            },methods:{
+
+            },
+            filters:{
+
+            },
+            components:{
+
+            }
+        })
+    </script>
+</body>
+</html>
