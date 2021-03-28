@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <template id="zimoban">
+        <div>
+            <h2>{{test}}</h2>
+        </div>
+    </template>
+
+    <div id="app">
+        <zi  :test="t" ref="aaa"></zi>
+        <button @click='dianji'>点吧</button>
+    </div>
+
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+                t:110
+            },
+            compoted:{
+
+            },
+            methods:{
+                dianji(){
+                    //要在模板上加ref标识
+                    this.$refs.aaa.btn()
+                }
+            },
+            filters:{
+
+            },
+            components:{
+                zi:{
+                    template:"#zimoban",
+                    props:{
+                        test:Number
+                    },
+                    methods:{
+                        btn(){
+                            alert("你成功了");
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
