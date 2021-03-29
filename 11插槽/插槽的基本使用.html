@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="../js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <hr/>
+        <cpn><p slot="center">指定显示</p></cpn>
+        <hr/>
+        <cpn></cpn>
+        <hr/>
+    </div>
+
+    <template id="test">
+        <div>
+            <h1>组件又来了</h1>
+            <h2>然后呢</h2>
+            <slot name="left"><button>左</button></slot>
+            <slot name="center"><button>中</button></slot>
+            <slot name="right"><button>右</button></slot>
+        </div>
+    </template>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{
+
+            },
+            compoted:{
+
+            },
+            methods:{
+
+            },
+            filters:{
+
+            },
+            components:{
+                cpn:{
+                    template:'#test'
+                }
+            }
+        });
+    </script>
+</body>
+</html>
