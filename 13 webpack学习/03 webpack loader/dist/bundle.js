@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "dist/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 0);
@@ -65,56 +65,72 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_one_js__ = __webpack_require__(1);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__js_two_js__ = __webpack_require__(2);
 
 
+var _one = __webpack_require__(1);
 
-console.log(__WEBPACK_IMPORTED_MODULE_0__js_one_js__["b" /* sum */](10, 20));
-console.log(__WEBPACK_IMPORTED_MODULE_0__js_one_js__["a" /* cheng */](3, 10));
-console.log(__WEBPACK_IMPORTED_MODULE_1__js_two_js__["a" /* o */].name);
-console.log(__WEBPACK_IMPORTED_MODULE_1__js_two_js__["a" /* o */].sex);
-console.log(__WEBPACK_IMPORTED_MODULE_1__js_two_js__["a" /* o */].haha());
+var obj_one = _interopRequireWildcard(_one);
+
+var _two = __webpack_require__(2);
+
+var obj_two = _interopRequireWildcard(_two);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+// import ig from './img/02.jpg'
+
+console.log(obj_one.sum(10, 20));
+console.log(obj_one.cheng(3, 10));
+console.log(obj_two.o.name);
+console.log(obj_two.o.sex);
+console.log(obj_two.o.haha());
 
 //依赖css文件
-__webpack_require__(3)
+__webpack_require__(3);
 
 /***/ }),
 /* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return sum; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return cheng; });
-function sum(x,y){
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+function sum(x, y) {
     return x + y;
 }
 
-function cheng(x,y){
+function cheng(x, y) {
     return x * y;
 }
 
-
+exports.sum = sum;
+exports.cheng = cheng;
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return o; });
-let o = {
-    name:"小明",
-    sex:"女",
-    haha(){
-        return "哈哈"
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+var o = {
+    name: "小明",
+    sex: "女",
+    haha: function haha() {
+        return "哈哈";
     }
-}
+};
 
-
+exports.o = o;
 
 /***/ }),
 /* 3 */
@@ -421,9 +437,12 @@ module.exports = function (list, options) {
 
 // Imports
 var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_GET_URL_IMPORT___ = __webpack_require__(7);
+var ___CSS_LOADER_URL_IMPORT_0___ = __webpack_require__(8);
 exports = ___CSS_LOADER_API_IMPORT___(false);
+var ___CSS_LOADER_URL_REPLACEMENT_0___ = ___CSS_LOADER_GET_URL_IMPORT___(___CSS_LOADER_URL_IMPORT_0___);
 // Module
-exports.push([module.i, "body{\r\n    background-color: aqua;\r\n}\r\ndiv{\r\n    font-size: 100px;\r\n    color: blueviolet;\r\n}", ""]);
+exports.push([module.i, "body{\r\n    /* background-color: aqua; */\r\n    background: url(" + ___CSS_LOADER_URL_REPLACEMENT_0___ + ");\r\n}\r\n#one_div{\r\n    font-size: 100px;\r\n    color: blueviolet;\r\n}", ""]);
 // Exports
 module.exports = exports;
 
@@ -527,6 +546,52 @@ function toComment(sourceMap) {
   var data = "sourceMappingURL=data:application/json;charset=utf-8;base64,".concat(base64);
   return "/*# ".concat(data, " */");
 }
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function (url, options) {
+  if (!options) {
+    // eslint-disable-next-line no-param-reassign
+    options = {};
+  } // eslint-disable-next-line no-underscore-dangle, no-param-reassign
+
+
+  url = url && url.__esModule ? url.default : url;
+
+  if (typeof url !== 'string') {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    // eslint-disable-next-line no-param-reassign
+    url = url.slice(1, -1);
+  }
+
+  if (options.hash) {
+    // eslint-disable-next-line no-param-reassign
+    url += options.hash;
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url) || options.needQuotes) {
+    return "\"".concat(url.replace(/"/g, '\\"').replace(/\n/g, '\\n'), "\"");
+  }
+
+  return url;
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/01_de5a115b.jpg";
 
 /***/ })
 /******/ ]);

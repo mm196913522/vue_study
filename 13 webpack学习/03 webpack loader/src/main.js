@@ -1,5 +1,6 @@
 import * as obj_one from './js/one.js'
 import * as obj_two from './js/two.js'
+// import ig from './img/02.jpg'
 
 console.log(obj_one.sum(10, 20));
 console.log(obj_one.cheng(3, 10));
