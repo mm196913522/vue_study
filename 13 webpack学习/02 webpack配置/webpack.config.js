@@ -16,4 +16,4 @@ module.exports = {
 }
 
 //2、映射npm run命令
-//    npm run命令可以运行package.json里面的scrpit设置
+//    npm run命令可以运行package.json里面的scrpit指定变量的设置
