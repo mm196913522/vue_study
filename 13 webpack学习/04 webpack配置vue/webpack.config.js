@@ -1,4 +1,10 @@
 const path = require('path');
+//每个js文件加入版权信息
+// const webpack = require('webpack');
+//安装自动生成index.html的插件
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//安装压缩js的插件
+const  uglifyjswebpackplugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
     entry : './src/main.js',
@@ -6,8 +12,7 @@ module.exports = {
         //path必须使用绝对路径
         //路径拼接
         path : path.resolve(__dirname,'dist'),
-        filename : 'bundle.js',
-        publicPath: 'dist/'
+        filename : 'bundle.js'
     },
     module: {
         rules: [
@@ -32,9 +37,9 @@ module.exports = {
               },
             ],
           },
+          {
           //ES6转ES5
           //npm install --save-dev babel-loader@7 babel-core babel-preset-es2015
-          {
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
             use: {
@@ -44,11 +49,32 @@ module.exports = {
               }
             }
           },
+          {
+            test: /\.vue$/,
+            use: ['vue-loader']
+          }
         ],
     },
     resolve:{
       alias:{
         'vue$': 'vue/dist/vue.esm.js'
       }
+    },
+    //配置插件
+    plugins:[
+      //版权信息
+      //new webpack.BannerPlugin('最终版权归mary所有'),
+      new HtmlWebpackPlugin({
+        template: 'index.html'
+      }),
+      //js压缩
+      new uglifyjswebpackplugin()
+    ],
+    devServer:{
+      contentBase:'./dist',
+      //是否实时监听
+      inline:true,
+      //默认是8080端口
+      // port:8080
     }
 }
