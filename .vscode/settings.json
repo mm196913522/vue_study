@@ -1,5 +1,6 @@
 {
     "php.executablePath": "D:/phpstudy_pro/Extensions/php/php7.3.4nts/php.exe",
     "phpcs.executablePath":"D:/phpstudy_pro/Extensions/php/php7.3.4nts/php.exe",
-    "php.validate.executablePath": "D:/phpstudy_pro/Extensions/php/php7.3.4nts/php.exe"
+    "php.validate.executablePath": "D:/phpstudy_pro/Extensions/php/php7.3.4nts/php.exe",
+    "git.ignoreLimitWarning": true
 }
