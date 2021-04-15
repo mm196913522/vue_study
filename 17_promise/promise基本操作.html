@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        //1.使用setTimeout
+        // setTimeout(()=>{
+        //     console.log('hello word');
+        // },1000)
+
+        //参数：一个函数参数，里面又包含两个函数参数，一个是成功，一个是失败
+        new Promise((resolve,rejekt)=>{
+            setTimeout(()=>{
+                //调用resolve之后回去运行then里面的东西
+                //resolve里面可以传参数，传了之后对应的then里面也就需要传一样的参数了
+                //resolve()
+
+                //rejekt里面也可以传参数，失败时候运行rejekt，对应是catch。
+                //用if判断成功还是失败，再看用哪个函数吧
+                rejekt('错误了')
+            },1000)
+        }).then(()=>{
+
+            console.log('hello word');
+            console.log('hello word');
+            console.log('hello word');
+
+            return new Promise((resolve,rejekt)=>{
+                setTimeout(()=>{
+                    resolve()
+                },1000)
+            }).then(()=>{
+
+                console.log('hello 2');
+                console.log('hello 2');
+                console.log('hello 2');
+
+                return new Promise((resolve,rejekt)=>{
+                    setTimeout(()=>{
+                        resolve()
+                    },1000)
+                }).then(()=>{
+
+                    console.log('33333');
+                    console.log('33333');
+                    console.log('33333');
+                })
+            })
+        }).catch(err=>{
+            console.log(err);
+        })
+    </script>
+</body>
+</html>
